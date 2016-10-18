@@ -19,8 +19,8 @@ class HashTable:
                     next_slot = self.rehash(next_slot, len(self.slots))
 
                 if self.slots[next_slot] == None:
-                    self.slots[hashValue] == key
-                    self.data[hashValue] == data
+                    self.slots[hashValue] = key
+                    self.data[hashValue] = data
                 else:
                     self.data[next_slot] = data  # replace
 
