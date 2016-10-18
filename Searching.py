@@ -50,7 +50,7 @@ print(binarySearch(l, 213213123))
 
 # Binary Search with Recursion
 
-def RecursiveBinarySearch(aList, item):
+def recursiveBinarySearch(aList, item):
     first = 0
     last = len(aList) - 1
     found = False
@@ -61,9 +61,27 @@ def RecursiveBinarySearch(aList, item):
             return True
         else:
             if item < aList[mid]:
-                return RecursiveBinarySearch(aList[:mid], item)
+                return recursiveBinarySearch(aList[:mid], item)
             else:
-                return RecursiveBinarySearch(aList[mid + 1:], item)
+                return recursiveBinarySearch(aList[mid + 1:], item)
 
 l = [1,3,6,22,221,553,1233,123123,123543212,1231243512,3123123123123123123,45435345435345435345345345]
-print(binarySearch(l, 3123123123123123123))
+print(recursiveBinarySearch(l, 3123123123123123123))
+
+
+def interpolationSearch(aList, item):
+    min = 0
+    max = len(aList) - 1
+    while min <= max:
+        scale = (item - aList[min]) // (aList[max] - aList[min])
+        mid = min + (max-min) * scale
+        if aList[mid] == item:
+            return mid
+        elif aList[mid] < item:
+            min = mid + 1
+        else:
+            max = mid - 1
+    return -1
+
+l = [1,3,6,22,221,553,1233,123123,123543212,1231243512,3123123123123123123,45435345435345435345345345]
+print(interpolationSearch(l, 45435345435345435345345345))
